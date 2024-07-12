@@ -8,9 +8,9 @@ class PostsCubit extends ApiCubit<List<PostModel>> {
   PostsCubit(this._postsRepo);
 
   Future<void> getPosts() async {
-    if (state is ApiSuccessState) {
-      return emit(state);
-    }
+    // if (state is ApiSuccessState) {
+    //   return emit(state);
+    // }
 
     emit(ApiLoadingState());
     final result = await _postsRepo.getPosts();
