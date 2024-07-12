@@ -6,7 +6,7 @@ import 'api_error_model.dart';
 
 part 'errors_data.dart';
 
-class ErrorHandler implements Exception {
+class ErrorHandler {
   final ApiErrorModel apiErrorModel;
   ErrorHandler(dynamic error) : apiErrorModel = _handleError(error);
 
@@ -18,7 +18,7 @@ class ErrorHandler implements Exception {
     if (error is String) return ApiErrorModel(message: error);
 
     if (error is Exception) {
-      // Exception are printed in this format [Exception : {errorMessage}]
+      // Exception are printed in this format "Exception : {errorMessage}"
       final errorMessage = error.toString().split(':').last;
       return ApiErrorModel(message: errorMessage);
     }
@@ -65,5 +65,17 @@ ApiErrorModel _handleDioExceptions(DioException error) {
     case DioExceptionType.connectionError:
     case DioExceptionType.badCertificate:
       return DataSource.defaultError.getFailure();
+  }
+}
+
+extension DioErrorExtension on DioExceptionType {
+  ApiErrorModel getFailure() {
+    try {
+      final dataSource = DataSource.values.byName(name);
+      return dataSource.getFailure();
+    } catch (e) {
+      log('$name is not a valid DataSource enum value.');
+      return DataSource.defaultError.getFailure();
+    }
   }
 }

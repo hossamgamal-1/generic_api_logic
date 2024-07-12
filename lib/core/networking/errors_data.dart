@@ -57,15 +57,3 @@ ApiErrorModel _getErrorModel(DataSource dataSource) {
 extension DataSourceExtension on DataSource {
   ApiErrorModel getFailure() => _getErrorModel(this);
 }
-
-extension DioErrorExtension on DioExceptionType {
-  ApiErrorModel getFailure() {
-    try {
-      final dataSource = DataSource.values.byName(name);
-      return dataSource.getFailure();
-    } catch (e) {
-      log('$name is not a valid DataSource enum value.');
-      return DataSource.defaultError.getFailure();
-    }
-  }
-}
