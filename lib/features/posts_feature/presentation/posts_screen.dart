@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/common_api_logic/api_cubit.dart';
+import '../../../core/api_logic/api_cubit.dart';
 import '../../../core/di.dart';
 import '../data/models/post_model.dart';
 import '../logic/posts_cubit.dart';

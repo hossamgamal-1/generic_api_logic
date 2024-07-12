@@ -1,4 +1,4 @@
-import '../../../core/common_api_logic/api_cubit.dart';
+import '../../../core/api_logic/api_cubit.dart';
 import '../../../core/networking/result_or_failure.dart';
 import '../data/models/post_model.dart';
 import '../data/repo/posts_repo.dart';
