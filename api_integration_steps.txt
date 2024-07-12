@@ -1,0 +1,6 @@
+1- Modeling request and response
+2- Data Source [endpoint - verb - body - headers] 
+3- Repository [error handling - remote/local data source handling]
+4- cubit [state management]
+5- UI [bloc builder/listener - loading - error handling]
+6- success state UI finalization
